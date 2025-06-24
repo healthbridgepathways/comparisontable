@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>USA RN Licensure Comparison Table - HealthBridge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #006c80;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+<h2>USA RN Licensure Comparison Table</h2>
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for a requirement or state...">
+
+<table id="comparison-table">
+  <thead>
+    <tr>
+      <th>Requirement</th>
+      <th>TX</th>
+      <th>CA</th>
+      <th>NY</th>
+      <th>FL</th>
+      <th>MI</th>
+      <th>NV</th>
+      <th>IL</th>
+      <th>GA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Online Application</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>CES Report (CGFNS/etc.)</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>English Proficiency Exam</td><td>✅</td><td>✅</td><td>✅*</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Fingerprints / CBC</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Nursing Jurisprudence Exam</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
+    <tr><td>Required Training (Infection/Abuse)</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+    <tr><td>Verification of Licensure (VR)</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>NCLEX Registration</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>ATT Validity Period</td><td>75d</td><td>90d</td><td>90d</td><td>90d</td><td>6mo</td><td>90d</td><td>6mo</td><td>N/A</td></tr>
+    <tr><td>NCLEX Attempt Limit</td><td>N/A</td><td>Unlimited</td><td>4x</td><td>Unlimited</td><td>3yr limit</td><td>4x</td><td>3yr limit</td><td>3yr limit</td></tr>
+    
+    
+  </tbody>
+</table>
+
+<script>
+function searchTable() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const rows = document.querySelectorAll("#comparison-table tbody tr");
+  rows.forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
