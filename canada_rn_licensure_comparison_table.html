@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Canada RN Licensure Comparison Table – HealthBridge</title>
+<style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #005580;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #e6f2f8;
+      cursor: pointer;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    input[type="text"] {
+      margin-top: 20px;
+      padding: 8px;
+      width: 100%;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<h1>Canada RN Licensure Comparison Table – HealthBridge</h1>
+<input id="searchInput" onkeyup="searchTable()" placeholder="Search for province, exam, or requirement..." type="text"/>
+<table id="comparisonTable">
+<thead>
+<tr>
+<th onclick="sortTable(0)">Province</th>
+<th onclick="sortTable(1)">Regulatory Body</th>
+<th onclick="sortTable(2)">Estimated Timeline</th>
+<th onclick="sortTable(3)">Estimated Cost (CAD)</th>
+<th onclick="sortTable(4)">NCLEX Required</th>
+<th onclick="sortTable(5)">Language Exam Required</th>
+<th onclick="sortTable(6)">Practice Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alberta</td>
+<td>CRNA</td>
+<td>6–12 months</td>
+<td>2,500–6,000+</td>
+<td>✅</td>
+<td>✅</td>
+<td>250 hrs in 5 yrs or bridging</td>
+</tr>
+<tr>
+<td>British Columbia</td>
+<td>BCCNM</td>
+<td>6–18 months</td>
+<td>2,000–5,000+</td>
+<td>✅</td>
+<td>✅</td>
+<td>450 hrs in 2 yrs or 1125 in 5 yrs</td>
+</tr>
+<tr>
+<td>Manitoba</td>
+<td>CRNM</td>
+<td>12–18 months</td>
+<td>1,000–5,000+</td>
+<td>✅</td>
+<td>✅</td>
+<td>Education or RN practice in 7 yrs</td>
+</tr>
+<tr>
+<td>New Brunswick</td>
+<td>NANB</td>
+<td>9–18 months</td>
+<td>2,000–5,000+</td>
+<td>✅</td>
+<td>✅</td>
+<td>RN work or graduation in last 5 yrs</td>
+</tr>
+<tr>
+<td>Newfoundland &amp; Labrador</td>
+<td>CRNNL</td>
+<td>6–18 months</td>
+<td>2,000–5,000+</td>
+<td>✅</td>
+<td>✅</td>
+<td>1125 hrs in 5 yrs or bridging</td>
+</tr>
+<tr>
+<td>Nova Scotia</td>
+<td>NSCN</td>
+<td>8–12 months</td>
+<td>2,500–4,000</td>
+<td>✅</td>
+<td>✅</td>
+<td>320 hrs in 5 yrs or conditional</td>
+</tr>
+<tr>
+<td>Ontario</td>
+<td>CNO</td>
+<td>6–24 months</td>
+<td>3,000–10,000</td>
+<td>✅</td>
+<td>✅</td>
+<td>450 hrs in 3 yrs or SPEP</td>
+</tr>
+<tr>
+<td>Prince Edward Island</td>
+<td>CRNMPEI</td>
+<td>3–12 months</td>
+<td>1,500–5,000</td>
+<td>✅</td>
+<td>✅</td>
+<td>450 hrs in 3 yrs or bridging</td>
+</tr>
+<tr>
+<td>Saskatchewan</td>
+<td>CRNS</td>
+<td>6–24 months</td>
+<td>1,500–7,000</td>
+<td>✅</td>
+<td>✅</td>
+<td>1125 hrs in 5 yrs or re-entry</td>
+</tr>
+</tbody>
+</table>
+<script>
+function searchTable() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const rows = document.querySelectorAll("#comparisonTable tbody tr");
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+}
+
+function sortTable(n) {
+  const table = document.getElementById("comparisonTable");
+  let switching = true;
+  let dir = "asc";
+  let switchcount = 0;
+
+  while (switching) {
+    switching = false;
+    let rows = table.rows;
+    for (let i = 1; i < rows.length - 1; i++) {
+      let shouldSwitch = false;
+      let x = rows[i].getElementsByTagName("TD")[n];
+      let y = rows[i + 1].getElementsByTagName("TD")[n];
+      let xVal = isNaN(x.innerHTML) ? x.innerHTML.toLowerCase() : parseFloat(x.innerHTML);
+      let yVal = isNaN(y.innerHTML) ? y.innerHTML.toLowerCase() : parseFloat(y.innerHTML);
+      if ((dir === "asc" && xVal > yVal) || (dir === "desc" && xVal < yVal)) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount++;
+    } else {
+      if (switchcount === 0 && dir === "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
