@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RN Licensure Comparison Tables – HealthBridge Pathways</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+    .tabs { overflow: hidden; background-color: #008080; }
+    .tabs button {
+      background-color: inherit; float: left; border: none; outline: none;
+      cursor: pointer; padding: 14px 16px; transition: 0.3s; color: white; font-size: 16px;
+    }
+    .tabs button:hover { background-color: #006666; }
+    .tabs button.active { background-color: #004d4d; }
+    .tab-content { display: none; padding: 0; }
+    iframe { width: 100%; height: 1200px; border: none; }
+  </style>
+</head>
+<body>
+
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event, 'usa')" id="defaultOpen">USA</button>
+  <button class="tablink" onclick="openTab(event, 'canada')">Canada</button>
+  <button class="tablink" onclick="openTab(event, 'intl')">International</button>
+</div>
+
+<div id="usa" class="tab-content">
+  <iframe src="https://healthbridgepathways.github.io/comparisontable/index.html"></iframe>
+</div>
+<div id="canada" class="tab-content">
+  <iframe src="https://healthbridgepathways.github.io/comparisontable/canada_rn_licensure_comparison_table.html"></iframe>
+</div>
+<div id="intl" class="tab-content">
+  <iframe src="https://healthbridgepathways.github.io/comparisontable/intl_rn_licensure_comparison_table.html"></iframe>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("tab-content");
+  for (i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
