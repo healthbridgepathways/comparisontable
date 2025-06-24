@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Australia, New Zealand, UK RN Licensure Comparison Table</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f7f9fa;
+        color: #333;
+        padding: 20px;
+    }
+    h1, h2, h3 {
+        color: #008080;
+    }
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        margin: 20px 0;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    th {
+        background-color: #008080;
+        color: white;
+        padding: 12px 15px;
+        text-align: left;
+    }
+    td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+</head>
+<body>
+<div class="container mt-4">
+<h2 class="mb-4" style="text-align: center; color: #007d7b;">RN Licensure Comparison – Australia, New Zealand, UK</h2>
+
+<input id="searchInput" onkeyup="searchTable()" placeholder="Search by any keyword..." style="margin: 20px auto; display: block; width: 80%; padding: 10px; font-size: 16px;" type="text"/>
+<script>
+function searchTable() {
+    var input, filter, table, tr, td, i, j, txtValue, found;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.querySelector("table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        found = false;
+        for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+        }
+        tr[i].style.display = found ? "" : "none";
+    }
+}
+</script>
+<table class="dataframe table table-bordered table-striped">
+<thead>
+<tr style="text-align: right;">
+<th>Province</th>
+<th>Regulatory Body</th>
+<th>Application Pathway</th>
+<th>Assessment Body</th>
+<th>English Test (Scores)</th>
+<th>Timeline</th>
+<th>Cost (CAD)</th>
+<th>Exam</th>
+<th>Practice Requirements</th>
+<th>Jurisprudence</th>
+<th>Police Clearance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Australia</td>
+<td>NMBA (via AHPRA)</td>
+<td>IQNM Self-check → Portfolio Assessment → Orientation → NCLEX + OSCE → Registration</td>
+<td>AHPRA (NMBA); Pearson VUE (NCLEX); Adelaide Health Simulation (OSCE)</td>
+<td>IELTS (7.0 overall), OET (B), PTE, TOEFL accepted</td>
+<td>6–12 months</td>
+<td>AUD 3,000–6,000+</td>
+<td>NCLEX-RN, OSCE (OBA Pathway)</td>
+<td>Not specified; pathway determined via IQNM stream</td>
+<td>Mandatory orientation modules (Part 1 &amp; 2)</td>
+<td>Yes – Australian + Intl criminal check (&lt;3 months old)</td>
+</tr>
+<tr>
+<td>New Zealand</td>
+<td>Nursing Council of New Zealand (NCNZ)</td>
+<td>TruMerit Verification → NCNZ Application → Cultural Courses → Theory + OSCE → Final Registration</td>
+<td>TruMerit (CGFNS); Pearson VUE (Theory); Nurse Maude (OSCE)</td>
+<td>IELTS (7.0), OET (B), CELBAN accepted; alternate via education/practice</td>
+<td>5–10 months</td>
+<td>NZD 4,500–6,500+</td>
+<td>NCNZ Theory Exam, OSCE (if required)</td>
+<td>1,800 hours post-reg practice in last 10 years</td>
+<td>Ngā Paerewa + Cultural Competence modules</td>
+<td>Yes – Fit2Work (Intl) + NZ MOJ (if applicable)</td>
+</tr>
+<tr>
+<td>United Kingdom</td>
+<td>Nursing and Midwifery Council (NMC)</td>
+<td>Eligibility Check → CBT → OSCE → Final Application &amp; Decision</td>
+<td>NMC; Pearson VUE (CBT); 5 OSCE Centers (UK)</td>
+<td>IELTS (7.0), OET (B), employer letter if borderline</td>
+<td>4–9 months</td>
+<td>£1,800–£2,500</td>
+<td>CBT, OSCE</td>
+<td>Not specified; evaluated in eligibility check</td>
+<td>Covered in CBT + OSCE scenario stations</td>
+<td>Yes – last 10 years in all countries lived 12+ months</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

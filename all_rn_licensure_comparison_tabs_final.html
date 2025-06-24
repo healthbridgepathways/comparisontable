@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RN Licensure Comparison - HealthBridge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4fdfd;
+            margin: 20px;
+        }
+        h1 {
+            color: #007c82;
+            text-align: center;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background-color: #e0f7f9;
+            border: 1px solid #007c82;
+            color: #007c82;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .tab-button:hover, .tab-button.active {
+            background-color: #007c82;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #007c82;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 RN Licensure Comparison Tables</h1>
+    <div class="tabs">
+        <button class="tab-button active" data-tab="usa">USA</button>
+        <button class="tab-button" data-tab="canada">Canada</button>
+        <button class="tab-button" data-tab="intl">International</button>
+    </div>
+    <div id="usa" class="tab-content active">
+        <iframe src="USA_RN_Licensure_comparison_table_with_search.html"></iframe>
+    </div>
+    <div id="canada" class="tab-content">
+        <iframe src="Canada_RN_Licensure_comparison_table.html"></iframe>
+    </div>
+    <div id="intl" class="tab-content">
+        <iframe src="Intl_RN_Licensure_comparison_table_with_search.html"></iframe>
+    </div>
+    <script>
+        const tabs = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                contents.forEach(c => c.classList.remove('active'));
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
